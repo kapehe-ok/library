@@ -3,12 +3,14 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import { unregister } from './registerServiceWorker';
-// import { HashRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
 
 ReactDOM.render(
+    <Router>
     <Provider store={store}>
         <App />
-    </Provider>, document.getElementById('root'));
+    </Provider>
+    </Router>, document.getElementById('root'));
 unregister();
