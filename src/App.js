@@ -16,7 +16,6 @@ class App extends Component {
     return (
       <HashRouter>
       <div className="App">
-      <h1>Hi there</h1>
       <NavBar />
         <Route component={ Login } path="/" exact />
         <Route component={ Browsing } path="/browsing" />

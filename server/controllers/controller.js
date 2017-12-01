@@ -1,3 +1,6 @@
+const users = require('./../models/users.js');
+var id = 1;
+
 module.exports = {
     login: (req, res, next) => {
         const { session } = req;
@@ -34,6 +37,18 @@ module.exports = {
     getUser: (req, res, next) => {
         const { session } = req;
         res.status(200).send(session.user)
+    },
+
+    getBooks: function(req, res, next) {
+        const db = req.app.get('db');
+        const bookId = req.params.id
+        db.get_books([bookId])
+        .then(books => {
+            res.status(200).send(books);
+        })
+        .catch(err => {
+            res.status(500).send(err);
+        })
     }
     
 }

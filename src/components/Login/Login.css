@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Alegreya+SC:700i");
+
+div {
+    font-family: "Alegreya SC", serif;
+    color: black; }
+
+.loginDiv {
+    background-color: #C6B38E;
+    height: 70vh;
+    width: 70vw;
+    margin-left: 200px;
+    margin-top: 150px;
+    border: 1px solid black;
+    padding: 100px;
+    border-radius: 10px;
+}
+
+.loginDiv h1 {
+    background-color: #C6B38E;
+}
+
+.inputBoxes > h2 {
+    background-color: #242325;
+    color: #C6B38E;
+
+}
+
+.inputBoxes > input {
+    background-color: #FBFFE6;
+
+}
+
+.loginButtons {
+    background-color: #A52422;
+    
+}
+
+.inputBoxes {
+    background-color: #242325;
+    border-radius: 10px;
+    margin-top: 30px;
+    margin-left: 100px;
+    width: 600px;
+    height: 300px;
+    padding: 50px;
+}
