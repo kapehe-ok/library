@@ -79,7 +79,7 @@ app.post('/api/auth/login', controller.login);
 app.post('/api/auth/register', controller.register)
 app.post('/api/auth/signout', controller.signout);
 
-app.get('/api/books/:id', controller.getBooks)
+app.get('/api/get_book', controller.getBooks)
 
 
 const PORT = 3005;

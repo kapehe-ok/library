@@ -1,7 +1,6 @@
 import axios from "axios";
 
 let initialState = {
-    user: '',
     books: []
 }
 
@@ -9,7 +8,7 @@ const GET_BOOKS= "GET_BOOKS";
 
 
 export function getBooks() {
-    const promise = axios.get('/api/books')
+    const promise = axios.get('/api/get_books')
     .then(res => {
         return res.data
     })
@@ -27,4 +26,6 @@ export default function reducer(state = initialState, action) {
             return state;
     }
 }
+
+
 

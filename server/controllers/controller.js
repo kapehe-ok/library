@@ -41,9 +41,9 @@ module.exports = {
 
     getBooks: function(req, res, next) {
         const db = req.app.get('db');
-        db.get_books([req.body.id])
-        .then(books => {
-            res.status(200).send(books);
+        db.get_books()
+        .then(response => {
+            res.status(200).send(response);
         })
     }
     
