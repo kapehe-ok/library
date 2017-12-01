@@ -1,12 +1,52 @@
-// import axios from "axios";
+import axios from "axios";
 
 let initialState = {
-
+    user: '',
+    books: []
 }
+
+const GET_BOOKS= "GET_BOOKS";
+const LOGIN = "LOGIN";
+const REGISTER = "REGISTER";
+
+export function getBooks(id) {
+    const promise = axios.get(`http://localhost:3001/api/books/${id}`).then(res => {
+        return res.data
+    })
+    return {
+        type: GET_BOOKS,
+        payload: promise
+    }
+}
+export function login( obj, history ) {
+    return {
+      type: LOGIN,
+      payload: axios.post( URL.login, obj ).then( response => {
+        history.push('/');
+        return response.data;
+      })
+    };
+  }
+  
+  export function register( obj, history ) {
+    return {
+      type: REGISTER,
+      payload: axios.post( URL.register, obj ).then( response => {
+        history.push('/');
+        return response.data;
+      })
+    };
+  }
 
 function reducer(state = initialState, action) {
     switch(action.type) {
-        default: 
+    case GET_BOOKS + "_FULFILLED":
+        return Object.assign({}, state, { books: action.payload });
+    case LOGIN + "_FULFILLED":
+        return Object.assign({}, state, {user: action.username});
+    case REGISTER + "_FULFILLED":
+        return Object.assign({}, state, { user: action.username})
+    default: 
             return state;
     }
 }

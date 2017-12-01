@@ -6,8 +6,7 @@ const express = require('express')
     , cors = require('cors')
     , controller = require("./controllers/controller.js")
     , checkForSession = require('./middlewares/checkforsession.js');
-    
-
+        
 const app = express();
 
 app.use(bodyParser.json());
@@ -26,6 +25,9 @@ massive(process.env.CONNECTION_STRING).then(db => {
 app.post('/api/auth/login', controller.login);
 app.post('/api/auth/register', controller.register)
 app.post('/api/auth/signout', controller.signout);
+
+app.get('/api/books/:id', controller.getBooks)
+
 
 const PORT = 3005;
 app.listen(PORT, console.log(`Listening on port ${PORT}`))
