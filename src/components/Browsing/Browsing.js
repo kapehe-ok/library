@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './Browsing.css';
 import { connect } from 'react-redux';
 import { getBooks } from './../../ducks/reducer.js';
-import axios from 'axios';
+// import axios from 'axios';
 
 
 class Browsing extends Component {
@@ -10,35 +10,39 @@ class Browsing extends Component {
         super(props);
 
         this.state = {
-
+            books: []
         }
     }
 
-    componentWillReceiveProps(id) {
-        axios.get(`/api/books/${this.props.books.id}`).then(response => {
-            this.setState({
-                books: response.data
-            })
-        })
+    componentDidMount() {
+        this.props.getBooks();
     }
 
 
     render() {
-        const books = this.props.books;
-         
-        return (
-            <div>
-                <h1>Browse Inventory</h1>
-                <div>
-                    <p><img src={books.img} /></p>
+        console.log(this.props.books)
+        const bunchOfBooks = this.props.books.map((books, i) => {
+            return (
+                <div key={i}>
+                    <p><img alt=" " src={books.img} /></p>
                     <p>Title: {books.book_name}</p>
                     <p>Author: {books.author}</p>
                     <p>In-Stock: {books.in_stock}</p>
                 </div>
-            </div>
-        )
+            )
+        })
+
+            return (
+                <div>
+                    <h1>Browse Inventory</h1>
+                    <div>
+                        {bunchOfBooks}
+                    </div>
+                </div>
+            )
+        }
     }
-}
+
 
 function mapStateToProps(state) {
     return {

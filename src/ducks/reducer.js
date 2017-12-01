@@ -9,8 +9,9 @@ const GET_BOOKS= "GET_BOOKS";
 const LOGIN = "LOGIN";
 const REGISTER = "REGISTER";
 
-export function getBooks(id) {
-    const promise = axios.get(`http://localhost:3001/api/books/${id}`).then(res => {
+export function getBooks() {
+    const promise = axios.get('/api/books')
+    .then(res => {
         return res.data
     })
     return {
@@ -38,9 +39,9 @@ export function login( obj, history ) {
     };
   }
 
-function reducer(state = initialState, action) {
+export default function reducer(state = initialState, action) {
     switch(action.type) {
-    case GET_BOOKS + "_FULFILLED":
+    case GET_BOOKS + '_FULFILLED':
         return Object.assign({}, state, { books: action.payload });
     case LOGIN + "_FULFILLED":
         return Object.assign({}, state, {user: action.username});
@@ -51,4 +52,3 @@ function reducer(state = initialState, action) {
     }
 }
 
-export default reducer;
