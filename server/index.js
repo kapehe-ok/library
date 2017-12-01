@@ -23,5 +23,9 @@ massive(process.env.CONNECTION_STRING).then(db => {
     app.set('db', db);
 })
 
+app.post('/api/auth/login', controller.login);
+app.post('/api/auth/register', controller.register)
+app.post('/api/auth/signout', controller.signout);
+
 const PORT = 3005;
 app.listen(PORT, console.log(`Listening on port ${PORT}`))
